@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6d94b5bca8.js" crossorigin="anonymous"></script>
+
+    <title>To Do List </title>
+</head>
+<body>
+    <div class="container">
+        <div id="newtask">
+           <br> <h2 >My To Do List..</h2>
+            <input type="text" placeholder="Add Your Task" id="myInput">
+            <button id="push" onclick="newElement()">Add</button>
+        </div>
+        <div class="add">
+            <ul id = "myUl">
+             <li><span>Shopping</span>  </li>
+              <li> <span>KFC</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+         var myNodeList = document.getElementsByTagName("LI");
+         for (var j = 0; j < myNodeList.length; j++) { 
+        var trashIcon = document.createElement("i");  
+        
+        trashIcon.className = "close";
+        trashIcon.classList.add('fas', 'fa-trash');
+        myNodeList[j].appendChild(trashIcon);
+
+        var updateIcon = document.createElement("i");
+        updateIcon.className = "edit";
+        updateIcon.classList.add('fas', 'fa-edit');
+        myNodeList[j].appendChild(updateIcon);
+         }
+
+         var close = document.getElementsByClassName("close");
+         for (var i = 0; i<close.length; i++){
+            close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+         }
+
+         var edit = document.getElementsByClassName("edit");
+         for (var f = 0; f<edit.length; f++){
+            edit[f].onclick = function() {
+                const editIcon = event.target;
+                const listItem = editIcon.parentElement;
+                const itemNewText = listItem.firstChild.textContent.trim();
+
+                const inputField = document.createElement('input');
+                inputField.type = 'text';
+                inputField.value = itemNewText;
+
+                listItem.innerHTML = '';
+                listItem.appendChild(inputField);
+                inputField.focus();
+                inputField.addEventListener('keypress', function(e){
+                    if (e.key === 'Enter'){
+                        listItem.textContent = inputField.value;
+                        listItem.insertBefore(updateIcon, listItem.firstChild);
+                        listItem.appendChild(trashIcon); 
+                    }
+
+                })
+
+
+                
+                
+              /*
+              var inputField = document.createElement('input');
+                inputField.type = 'text';
+                inputField.value = listUpdate.textContent.trim();
+
+                //replace list item with new text typed in input field
+                listUpdate.innerHTML = '';
+                listUpdate.appendChild(inputField);
+                inputField.focus(); */
+                
+            }
+         }
+
+         var list = document.querySelector('ul');
+         list.addEventListener('click', function(ev){
+            if(ev.target.tagName === 'LI'){
+                ev.target.classList.toggle('checked');
+            }
+         });
+         
+        function newElement(){
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+
+            if (inputValue === ''){
+                alert("write your task");
+            }
+
+            else{
+                document.getElementById("myUl").appendChild(li);
+                var trashIcon = document.createElement("i");
+                trashIcon.className = "close";
+                trashIcon.classList.add('fas', 'fa-trash');
+                li.appendChild(trashIcon);
+
+                var updateIcon = document.createElement("i");
+                updateIcon.className = "edit";
+                updateIcon.classList.add('fas', 'fa-edit');
+                li.appendChild(updateIcon);
+
+                for (var j = 0; j < close.length; j++) {
+                close[j].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+                }
+            }
+            var edit = document.getElementsByClassName("edit");
+            for (var f = 0; f<edit.length; f++){
+            edit[f].onclick = function() {
+            const editIcon = event.target;
+            const listItem = editIcon.parentElement;
+            const itemNewText = listItem.firstChild.textContent.trim();
+            const inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.value = itemNewText;
+            listItem.innerHTML = '';
+            listItem.appendChild(inputField);
+            inputField.focus();
+            inputField.addEventListener('keypress', function(e){
+                if (e.key === 'Enter'){
+                    listItem.textContent = inputField.value;
+                    listItem.appendChild(updateIcon);
+                    listItem.appendChild(trashIcon);
+                }
+            })
+        }
+    }
+            }    
+            document.getElemenyById('myInput').value = " ";
+}
+     /*   function deleteItem(event){
+            const listItem = event.target.closest('li');
+            if(listItem){
+                list.removeChild(listItem);
+            }
+            const trashIcon = listItem.querySelector('.fa-trash');
+            trashIcon.addEventListener('click', deleteItem);
+
+        } */
+
+    </script>
+</body>
+</html

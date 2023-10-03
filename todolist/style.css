@@ -1,0 +1,81 @@
+body{
+    font-family: "poppins", sans-serif;
+}
+
+.container{
+    background-color: #000;
+    text-align: center;
+    margin: 10.5rem 15.5rem;
+    height: 470px;
+
+
+}
+.container h2{
+    color: hotpink;
+    font-weight: bold;
+    font-size: 35px;   
+
+}
+#newtask input{
+    padding: 10px;
+    text-indent:inherit;
+    width: 50%;
+}
+#newtask input:focus{
+    outline: none;
+    border: 2px solid hotpink;
+    background-color: peachpuff;
+}
+#newtask button{
+    padding: 10px 40px;
+    background-color: hotpink;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: navy;
+    font-size: 15px;
+    margin-left: 10px;
+}
+#newtask button:active{
+    background-color: lightgreen;
+}
+.add{
+    text-align: left;
+}
+.add ul{
+    color: white;
+    margin-left: 11.3%;
+    margin-right: 31%;
+    
+}
+.add ul li{
+    cursor: pointer;
+    list-style-type: none;
+    padding: 5px;
+    background-color: #eec0c8;
+    border: 1px solid #FF00FF;
+    color: #1E2952;
+    font-size: 17px;
+}
+.fa-trash{
+    position: absolute;
+    right: 39%;
+
+  }
+.fa-trash:hover{
+    color: red;
+    
+}
+.fa-edit{
+    position: absolute;
+    right: 41%;
+}
+.fa-edit:hover{
+    color: orange;
+}
+
+ul li.checked {
+    background-color: red;
+    text-decoration: line-through;
+}
